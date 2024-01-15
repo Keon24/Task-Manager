@@ -27,6 +27,18 @@ const UserSchema = new mongoose.Schema(
         required: "Please enter a password",
         minLength: 5,
       },
+      picturePath: {
+         type: String,
+         default: "",
+      },
+      resetToken: {
+        type: String,
+        default: null,
+      },
+      resetTokenExpiration: {
+        type: Date,
+        default: null,
+      }
       
     }
 );
