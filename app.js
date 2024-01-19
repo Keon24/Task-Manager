@@ -4,18 +4,21 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import multer from 'multer';
 
+
 import mongoose from 'mongoose';
 
 import cors from 'cors';
+import userRoutes from "./routes/user.js"
+import authRoutes from "./routes/auth.js"
 
 
-import session from 'express-session';
-import connectMongo from 'connect-mongo';
+//import session from 'express-session';
+//import connectMongo from 'connect-mongo';
 
-import swaggerUI from 'swagger-ui-express';
-import winston from 'winston';
-import Joi from 'joi';
-import nodemailer from 'nodemailer';
+//import swaggerUI from 'swagger-ui-express';
+//import winston from 'winston';
+//import Joi from 'joi';
+//import nodemailer from 'nodemailer';
 
 import path from "path";
 import { fileURLToPath } from 'url';
@@ -44,7 +47,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 /* MONGOOSE SETUP */
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 6001;
 mongoose.connect(process.env.MONGO_URL, {
  
 
@@ -55,3 +58,5 @@ mongoose.connect(process.env.MONGO_URL, {
 
 /* ROUTES WITH FILES */
 app.post("/auth/register", upload.single("picture"), register);
+/* ROUTES */
+app.use("/auth", authRoutes);
