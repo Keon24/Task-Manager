@@ -8,8 +8,9 @@ import multer from 'multer';
 import mongoose from 'mongoose';
 
 import cors from 'cors';
-import userRoutes from "./routes/user.js"
-import authRoutes from "./routes/auth.js"
+
+import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/user.js";
 
 
 //import session from 'express-session';
@@ -49,7 +50,6 @@ const upload = multer({ storage });
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
 mongoose.connect(process.env.MONGO_URL, {
- 
 
 }).then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
@@ -60,3 +60,4 @@ mongoose.connect(process.env.MONGO_URL, {
 app.post("/auth/register", upload.single("picture"), register);
 /* ROUTES */
 app.use("/auth", authRoutes);
+app.use("/users", userRoutes)

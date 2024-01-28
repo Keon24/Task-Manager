@@ -9,3 +9,7 @@ export const getProfile = async (req, res) => {
     return res.status(500).json({ status: false, msg: "Internal Server Error" });
   }
 };
+
+// export const getAllUsers = async (req,res) =>{
+//   const user = await User.
+// }
